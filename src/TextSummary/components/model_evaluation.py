@@ -32,7 +32,7 @@ class ModelEvaluation:
             return_tensors='pt')
     
             summaries = model.generate(input_ids=inputs['input_ids'].to(device),
-            attention_mask=input['attention_mask'].to(device), 
+            attention_mask=inputs['attention_mask'].to(device), 
             length_penalty=0.8, 
             num_beams=8, 
             max_length=128)
@@ -47,7 +47,7 @@ class ModelEvaluation:
     def evaluate(self):
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
         tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_path)
-        model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.modle_path).to(device)
+        model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_path).to(device)
         dataset_samasum_pt = load_from_disk(self.config.data_path)
         rouge_names = ['rouge1', 'rouge2', 'rougeL', 'rougeLsum']
         rouge_metric = evaluate.load('rouge')

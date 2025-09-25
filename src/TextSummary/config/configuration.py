@@ -66,6 +66,6 @@ class ConfigurationManager:
             data_path=config.data_path,
             model_path=config.model_path,
             tokenizer_path=config.tokenizer_path,
-            metric_file_path=config.metric_file_path
+            metric_file_name=config.metric_file_name
         )
         return model_evaluation_config

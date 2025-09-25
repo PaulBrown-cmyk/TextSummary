@@ -42,6 +42,6 @@ class ModelTrainer:
         )
         trainer.train()
         model_pegasus.save_pretrained(os.path.join(
-            self.config.root_dir, 'pegasus-samsum-model'))
+            self.config.root_dir, 'tokenizer'), safe_serialization=True)
         tokenizer.save_pretrained(os.path.join(
             self.config.root_dir, 'tokenizer'))
