@@ -19,13 +19,12 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
             logger.info(f"yaml file: {path_to_yaml} loaded successfully")
             return ConfigBox(content)
     except BoxValueError:
-        raise ValueError("yaml file is empty.")
+        raise ValueError(f"yaml file {yaml_file} is empty.")
     except Exception as E:
         raise E
 
-
 @ensure_annotations
-def creat_directories(path_to_directories: list, verbose=True):
+def create_directories(path_to_directories: list, verbose=True):
     for path in path_to_directories:
         os.makedirs(path, exist_ok=True)
         if verbose:
